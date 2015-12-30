@@ -33,10 +33,36 @@
 
 }
 
+
+atom-text-editor-minimap {
+	background: darken(@white, 2%);
+}
+
+.gutter {
+	opacity: 0.5;
+}
+
+.gutter-container::after {
+	display: block;
+	content: ' ';
+	background-image: linear-gradient(to bottom, @white 0%, rgba(255,255,255,0) 50%);
+	width: 100%;
+	height: 200px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+atom-text-editor::shadow .wrap-guide {
+  width: 10px;
+  background-color: rgba(0,0,0, 0.01);
+}
+
 .bracket-matcher .region {
   background-color: @light_blue;
   border-radius: 2px;
   border: 1px solid @blue;
+	z-index: 100;
 }
 
 .comment {
@@ -49,7 +75,7 @@
 
 .storage.type { color: @green; }
 
-.constant { color: @red;
+.constant { color: @black;
 
   &.numeric,
   &.boolean { color: @turquoise; }
@@ -119,10 +145,12 @@
 
   .attribute-name { color: @blue; }
 
-  .quoted { color: @red;
+  .quoted { color: lighten(@blue, 30%);
 
     .punctuation { color: @dark_blue; }
-
+		.php {
+			color: @red;
+		}
   }
 
   .js .quoted { color: @orange; }
